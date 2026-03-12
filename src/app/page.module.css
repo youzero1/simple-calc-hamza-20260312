@@ -1,0 +1,241 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Calculator */
+.calculator {
+  background: #1e1e2e;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.display {
+  background: #12121f;
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: right;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.expression {
+  font-size: 0.85rem;
+  color: #6b7280;
+  min-height: 1.2rem;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #f8fafc;
+  transition: font-size 0.1s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #0d0d1a;
+  padding: 1px;
+}
+
+.btn {
+  border: none;
+  padding: 0;
+  height: 72px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: filter 0.1s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  outline: none;
+}
+
+.btn:hover {
+  filter: brightness(1.2);
+}
+
+.btn:active {
+  filter: brightness(0.85);
+  transform: scale(0.97);
+}
+
+.btnDigit {
+  background: #2a2a3e;
+  color: #f1f5f9;
+}
+
+.btnFunction {
+  background: #3a3a52;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.btnOperator {
+  background: #e67e22;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.btnEquals {
+  background: #27ae60;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.btnZero {
+  grid-column: span 2;
+  justify-content: flex-start;
+  padding-left: 1.6rem;
+}
+
+/* History */
+.history {
+  background: #1e1e2e;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  width: 280px;
+  flex-shrink: 0;
+  overflow: hidden;
+  max-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.historyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 0.75rem;
+  background: #12121f;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.historyHeader h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.refreshBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.refreshBtn:hover {
+  background: rgba(255,255,255,0.05);
+  color: #f1f5f9;
+}
+
+.refreshBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.historyEmpty {
+  color: #4b5563;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.historyList {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.historyList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.historyList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.historyList::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+.historyItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: background 0.15s;
+}
+
+.historyItem:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.historyExpression {
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.historyResult {
+  font-size: 1rem;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.historyTime {
+  font-size: 0.7rem;
+  color: #374151;
+  margin-top: 0.15rem;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .history {
+    width: 320px;
+    max-height: 300px;
+  }
+}
